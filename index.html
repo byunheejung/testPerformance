@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="box-transform"></div>
+        <div class="box-reflow"></div>
+    </div>
+    <button type="button" class="btn-start">animation start</button>
+</body>
+<script>
+    var btn = document.querySelector('.btn-start');
+    var target = document.querySelector('.box-transform');
+    var target2 = document.querySelector('.box-reflow');
+    document.addEventListener('DOMContentLoaded',function(e){
+        target.style.transform = 'scaleX(200)';
+        target2.style.width = '200px'
+    })
+</script>
+</html>

@@ -1,0 +1,16 @@
+.wrap{
+    border: 10px solid red;
+}
+.box-transform{
+    background-color: pink;
+    width: 1px;
+    height: 20px;
+    transform-origin: 0 0;
+    transition: 1s all ease-in;
+}
+.box-reflow{
+    background-color: blue;
+    width: 1px;
+    height: 20px;
+    transition: 1s all ease-in;
+}
