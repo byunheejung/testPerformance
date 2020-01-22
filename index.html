@@ -9,18 +9,46 @@
 </head>
 <body>
     <div class="wrap">
-        <div class="box-transform"></div>
-        <div class="box-reflow"></div>
+        <!-- <div class="box-transform"></div> -->
+        <!-- <div class="box-reflow"></div> -->
+        <div class="raf-box">raf</div>
+        <div class="value">requestAnimationFrame</div>
     </div>
-    <button type="button" class="btn-start">animation start</button>
+    <!-- <button type="button" class="btn-start">animation start</button> -->
 </body>
 <script>
-    var btn = document.querySelector('.btn-start');
-    var target = document.querySelector('.box-transform');
-    var target2 = document.querySelector('.box-reflow');
-    document.addEventListener('DOMContentLoaded',function(e){
-        target.style.transform = 'scaleX(200)';
-        target2.style.width = '200px'
+    // var btn = document.querySelector('.btn-start');
+    // var target = document.querySelector('.box-transform');
+    // var target2 = document.querySelector('.box-reflow');
+    // document.addEventListener('DOMContentLoaded',function(e){
+    //     // target.style.transform = 'scaleX(200)';
+    //     target2.style.width = '200px'
+    // })
+    const raftest = document.querySelector('.raf-box');
+    const value = document.querySelector('.value');
+    let rafId;
+    // requestAnimationFrame(() => {console.log(0)});
+    console.log(1);
+    // 1이 찍히고 난 후에 0이 찍힘
+    let yPos = 0;
+    function render() {
+        // value.innerHTML = yPos;
+        raftest.style.transform = `translateY(${yPos}px)`;
+        yPos += 10;
+
+        rafId = requestAnimationFrame(render);
+        // 반복시킬 함수 안에서 requestAnimationFrame 인자 안에 함수 자체를 넣어주면 계속실행
+        // 속도는 초당 60번을 목표로함 성능이나 상황에 따라서 속도는 느려질수 있음
+        console.log(rafId);
+        if(yPos > 500){
+            cancelAnimationFrame(rafId); // animation cancel    
+        }
+    }
+
+    render();
+
+    window.addEventListener('click', () => {
+        cancelAnimationFrame(rafId); // animation cancel
     })
 </script>
 </html>
